@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript Experiment</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+        }
+
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        h2 {
+            background-color: #8F8F8F;
+            color: #FFFFFF;
+            font-size: 1em;
+            padding: 0.5em;
+            width: 100%;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .exp-wrap a:hover + .desc {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+     <script>
+function myFunction() {
+    var x, text;
+
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("numb").value;
+
+    // If x is Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 1 || x > 10) {
+        text = "Input not valid";
+    } else {
+        text = "Input OK";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+    </script>
+    <form>
+        <div class="main-wrapper">
+            <h1>JavaScript Can Validate Input</h1>
+
+            <p>Please input a number between 1 and 10:</p>
+
+            <input id="numb" type="number">
+
+            <button type="button" onclick="myFunction()">Submit</button>
+        </div>
+            <br /><br />
+
+            <hr />
+
+            <h4>Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/experiments/storyfiles/javaScriptExperiment.htm" target="_blank">View Source</a>
+
+            <hr />
+
+            <h4>References</h4>
+            <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+
+            <hr />
+
+        </div>
+    </form>
+</body>
+</html>
+
+

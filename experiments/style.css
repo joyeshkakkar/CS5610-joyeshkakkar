@@ -1,0 +1,199 @@
+﻿html {
+  overflow-y: scroll;
+}
+body {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #ffd;
+  background: black;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  min-width: 400px;
+}
+img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: text-bottom;
+}
+a {
+  color: #ffd;
+}
+.nodecor a {
+  text-decoration: none;
+}
+.active,
+a:hover,
+a:focus {
+  color: #ffd;
+  background: #525;
+}
+h1, h2, h3 {
+  margin: .8em 0 .1em 0;
+  padding: 0;
+}
+.content h1 {
+  margin-left: -1em;
+}
+p {
+  margin: .4em 0 .8em 0;
+  padding: 0;
+}
+small {
+  font-size: 82.5%;
+}
+tt {
+  font-size: 125%;
+}
+dl.alist {
+  width: 100%;
+  clear: left;
+  margin: 0;
+}
+.alist dt {
+  background: #222;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  width: 15%;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  text-align: right;
+  vertical-align: top;
+}
+.alist dd {
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  width: 82%;
+  margin-bottom: 0.5em;
+  margin-left: 2%;
+  vertical-align: top;
+}
+#header {
+  position: relative;
+  z-index: 5;
+  clear: both;
+  float: left;
+  width: 100%;
+  border-bottom: 2px solid #bb7;
+}
+#header p, #header h1, #header h2, #header h3 {
+  padding: .4em 10px 0 10px;
+  margin: 0;
+}
+#header ul {
+  clear: right;
+  float: right;
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+#header ul li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#header ul li > .active,
+#header ul li > a {
+  display: block;
+  float: left;
+  margin: 0 2px;
+  padding: 3px 10px;
+  text-align: center;
+  background: #222;
+  color: #dd9;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  right: 10px;
+  line-height: 1.3em;
+}
+#header ul li a:hover,
+#header ul li a:focus {
+  color: #ffd;
+  background: #525;
+}
+#header ul li .active,
+#header ul li .active a,
+#header ul li .active a:hover,
+#header ul li .active a:focus {
+  color: #222;
+  background: #bb7;
+  text-decoration: none;
+  font-weight: bold;
+}
+.columns {
+  position: relative;
+  z-index: 4;
+  clear: both;
+  float: left;
+  width: 100%;
+  min-height: 480px;
+  margin: 0;
+  padding: 0;
+  background: #222;
+}
+.contentwrapper {
+  margin: 10px 0;
+  position: relative;
+  z-index: 6;
+}
+.widecontentwrapper {
+  margin: 10px 1em;
+  position: relative;
+  z-index: 6;
+}
+.content {
+  margin: 0 auto;
+  width: 40em;
+}
+.widecontent {
+  margin: 0 auto;
+}
+.paren {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  font-size: 480px;
+  color: #151515;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+.leftparen {
+  position: absolute;
+  width: 100%;
+  top: -80px;
+  left: 0px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.rightparen {
+  position: absolute;
+  width: 100%;
+  top: -80px;
+  right: 10px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+#footer {
+  position: relative;
+  z-index: 5;
+  clear: both;
+  float: left;
+  width: 100%;
+  border-top: 2px solid #bb7;
+}
+#footer p {
+  padding: 10px;
+  margin: 0;
+}

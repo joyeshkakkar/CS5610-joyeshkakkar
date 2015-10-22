@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../Experiments/project/project02Story.txt                   Project related Experiments Part 2
+public/project06.html        User authentication using passport
+public/project07.html        Sign Up page
+public/project08.html		 Marking a track as favorite and storing it in db
+public/project09.html		 Showing favorite tracks of a user
+public/project10.html		 Deleting a track from favorites list

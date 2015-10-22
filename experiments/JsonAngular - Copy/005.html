@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Basic Angular js Experiments</title>
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />    
+    <script src="js/angular.min.js"></script>
+    <script src="js/005.js"></script>
+</head>
+<body ng-app="BasicMoviesApp">
+    <header>
+        <h1>
+            Basic Angular JS Experiment
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h4>Building upon the previous experiment, this experiment allows user to add content. 
+        These are basic experiments on angular js using the ideas from Prof. Jose's lecture.</h4>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="content">
+            <div ng-controller="BasicMovieController" class="container">
+                <h1>Simple Movie Database</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Year</th>
+                            <th>Plot</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <th><input ng-model="movie.title" class="form-control" /></th>
+                            <th><input ng-model="movie.year" class="form-control" /></th>
+                            <th><input ng-model="movie.plot" class="form-control" /></th>
+                            <th>
+                                <button ng-click="addMovie()" class="btn btn-success">
+                                    Add
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="movie in movies">
+                            <td>{{movie.title}}</td>
+                            <td>{{movie.year}}</td>
+                            <td>{{movie.plot}}</td>
+                            <td>
+                                <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="maindiv">
+        <h4> Code Snippet</h4>
+        <pre>
+            var app = angular.module(&quot;BasicMoviesApp&quot;, []);
+            app.controller(&quot;BasicMovieController&quot;,
+                function ($scope) {
+                    var movies = [
+                        { title: &quot;Rush&quot;, year: 2009, plot: &quot;The merciless 1970s rivalry between Formula One rivals James Hunt and Niki Lauda.&quot; },
+                        { title: &quot;The Shawshank Redemption&quot;, year: 1994, plot: &quot;Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.&quot; },
+                        { title: &quot;The Prestige &quot;, year: 2006, plot: &quot;Two stage magicians engage in competitive one-upmanship in an attempt to create the ultimate stage illusion.&quot; }
+                    ];
+                    $scope.movies = movies;
+                    $scope.addMovie = function () {
+                        var newMovie = {
+                            title: $scope.movie.title,
+                            year: $scope.movie.year,
+                            plot: $scope.movie.plot
+                        };
+                        $scope.movies.push(newMovie);
+                    }
+                    $scope.removeMovie = function (movie) {
+                        var index = $scope.movies.indexOf(movie);
+                        $scope.movies.splice(index, 1);
+                    }
+                });
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            An array of movies is created which is rendered on the UI using angular js. 
+            User is having capability to remove a movie. As a user clicks on the delete button, that movie object is sent to js and spliced from the arrary.
+            USer can add a new movie as well. On click of add button, movie is added to the array of movies already present.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/005.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/js/005.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

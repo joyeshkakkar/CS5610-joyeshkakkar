@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JQuery Experiment 01</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jQuery01.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            JQuery UI Experiments
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment shows the draggable effect achieved using JQuery.</h3>
+        <p>Below game images can be dragged horizontally.</p>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="games">
+            <div class="acunity">
+                <img src="../images/JQuery/acunity.jpg" />
+                <h3>Assassins Creed Unity</h3>
+            </div>
+            <div class="cod">
+                <img src="../images/JQuery/cod.jpg" />
+                <h3>Call Of Duty</h3>
+            </div>
+            <div class="crysis">
+                <img src="../images/JQuery/crysis.jpg" />
+                <h3>Crysis</h3>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="codesnippet" >
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre >
+            $(function () {
+                $(".acunity").draggable({
+                    grid: [40, 40],
+                    axis: "x"
+                });
+                $(".cod").draggable({
+                    grid: [40, 40],
+                    axis: "x"
+                });
+                $(".crysis").draggable({
+                    grid: [40, 40],
+                    axis: "x"
+                });
+            })
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            JQuery objects are captured and made draggable. Also, objects can be dragged by grid size of [40,40] pixels and only in x-axis.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/jQuery01.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/js/jQuery01.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

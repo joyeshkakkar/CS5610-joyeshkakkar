@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Playlist</title>
+</head>
+<body>
+    <div class="container" id="loginContainer">
+        <h3>Playlists</h3>
+        <div class="row col-md-12">
+            <div class="col-md-6 col-md-offset-1">
+                <div>
+                    <button id="addPlaylist" ng-show="currentUser"
+                            ng-click="show()" class="btn btn-primary">
+                        Create Playlist
+                    </button>
+                    <br /><br />
+                    <div collapse="isCollapsed">
+                        <input type="text" ng-model="playlistName" /><br /><br />
+                        <button id="save()" class="btn btn-success" ng-click="savePlaylist()">Save</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="cancel()">Cancel</button><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br /><br />
+        <div class="row col-md-12">
+            <div class="col-md-10 col-md-offset-1">
+                <br />
+                <tabset>
+                    <tab heading="Your Playlists" active="true">
+                        <div class="row" ng-show="ownPlaylists.length <= 0">
+                            <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                                <h5>Alas, You don't have any playlists.</h5>
+                            </div>
+                        </div>
+                        <accordion close-others="true">
+                            <accordion-group class="text-left"
+                                             ng-repeat="playlist in ownPlaylists | orderBy:'addedOn'">
+                                <accordion-heading>
+                                    <div class="row col-md-offset-0">
+                                        <div class="pull-left">
+                                            <b>{{playlist.name}}</b>
+                                        </div>
+                                        <div class="col-md-offset-11">
+                                            <a href="" tooltip-placement="bottom" tooltip="Publish playlist." ng-click="publishPlaylist(playlist)" ng-show="playlist.publish === false">
+                                                <span style="color:forestgreen;" class="glyphicon glyphicon-eye-open"></span>
+                                            </a>
+                                            <a href="" tooltip-placement="bottom" tooltip="Unpublish playlist." ng-click="unpublishPlaylist(playlist)" ng-show="playlist.publish === true">
+                                                <span style="color:firebrick;" class="glyphicon glyphicon-eye-close"></span>
+                                            </a>
+                                            &nbsp;
+                                            <a href="" tooltip-placement="bottom" tooltip="Delete playlist." ng-click="deletePlaylist(playlist)">
+                                                <span style="color:red;" class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </accordion-heading>
+                                <div class="table-responsive">
+                                    <table class="table table-striped" ng-show="playlist.tracks.length > 0">
+                                        <tbody>
+                                            <tr ng-repeat="track in playlist.tracks | orderBy:'-popularity'">
+                                                <td class="col-md-4 col-md-offset-1">{{track.name}}</td>
+                                                <td class="col-md-3 col-md-offset-1">
+                                                    <a href="{{track.preview_url}}" tooltip-placement="bottom" tooltip="Listen preview." target="_blank">
+                                                        <span class="glyphicon glyphicon-volume-up"></span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a href="{{track.external_url}}" tooltip-placement="bottom" tooltip="Listen in spotify." target="_blank">
+                                                        <span class="glyphicon glyphicon-play"></span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a href="" tooltip-placement="bottom" tooltip="Remove track from playlist." ng-click="removeTrackFromPlaylist(track, playlist)">
+                                                        <span style="color:red;" class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" ng-show="playlist.tracks.length <= 0">
+                                    <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                                        <h5>Alas, You don't have any tracks in this playlist. Add some tracks to this playlist through <a href="/#/search">Search</a> page or <a href="/#/profile">Profile</a> page.</h5>
+                                    </div>
+                                </div>
+                            </accordion-group>
+                        </accordion>
+                    </tab>
+                    <tab heading="Followed Playlists">
+                        <div class="row" ng-show="followedPlaylists.length <= 0">
+                            <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                                <h5>You have not followed any playlists.</h5>
+                            </div>
+                        </div>
+                        <accordion close-others="true">
+                            <accordion-group class="text-left"
+                                             ng-repeat="followedPlaylist in followedPlaylists | orderBy:'addedOn'">
+                                <accordion-heading>
+                                    <div class="row col-md-offset-0">
+                                        <div class="pull-left">
+                                            <b>{{followedPlaylist.name}}</b>
+                                        </div>
+                                        <div class="col-md-offset-11">
+                                            <a href="" tooltip-placement="bottom" tooltip="Unfollow playlist." ng-click="unfollowPlaylist(followedPlaylist)">
+                                                <span style="color:forestgreen;" class="glyphicon glyphicon-thumbs-down"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </accordion-heading>
+                                <div class="table-responsive">
+                                    <table class="table table-striped" ng-show="followedPlaylist.tracks.length > 0">
+                                        <tbody>
+                                            <tr ng-repeat="track in followedPlaylist.tracks | orderBy:'-popularity'">
+                                                <td class="col-md-4 col-md-offset-1">{{track.name}}</td>
+                                                <td class="col-md-3 col-md-offset-1">
+                                                    <a href="{{track.preview_url}}" tooltip-placement="bottom" tooltip="Listen preview." target="_blank">
+                                                        <span class="glyphicon glyphicon-volume-up"></span>
+                                                    </a>
+                                                    &nbsp;
+                                                    <a href="{{track.external_url}}" tooltip-placement="bottom" tooltip="Listen in spotify." target="_blank">
+                                                        <span class="glyphicon glyphicon-play"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row" ng-show="followedPlaylist.tracks.length <= 0">
+                                    <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                                        <h5>Creater of this playlist has not added any tracks in it.</h5>
+                                    </div>
+                                </div>
+                            </accordion-group>
+                        </accordion>
+                    </tab>
+                </tabset>
+                <br /><br />
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>Published playlists by other users</h3>
+                <div class="row" ng-show="publishedPlaylists.length <= 0">
+                    <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                        <h5>There are no playlists shared by other users.</h5>
+                    </div>
+                </div>
+                <accordion close-others="true">
+                    <accordion-group class="text-left"
+                                     ng-repeat="publishedPlaylist in publishedPlaylists | orderBy:'addedOn'">
+                        <accordion-heading>
+                            <div class="row col-md-offset-0">
+                                <div class="pull-left">
+                                    <b>{{publishedPlaylist.name}}</b>
+                                </div>
+                                <div class="col-md-offset-11">
+                                    <a href="" tooltip-placement="bottom" tooltip="Follow playlist." ng-click="followPlaylist(publishedPlaylist)">
+                                        <span style="color:forestgreen;" class="glyphicon glyphicon-thumbs-up"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </accordion-heading>
+                        <div class="table-responsive">
+                            <table class="table table-striped" ng-show="publishedPlaylist.tracks.length > 0">
+                                <tbody>
+                                    <tr ng-repeat="track in publishedPlaylist.tracks | orderBy:'-popularity'">
+                                        <td class="col-md-4 col-md-offset-1">{{track.name}}</td>
+                                        <td class="col-md-3 col-md-offset-1">
+                                            <a href="{{track.preview_url}}" tooltip-placement="bottom" tooltip="Listen preview." target="_blank">
+                                                <span class="glyphicon glyphicon-volume-up"></span>
+                                            </a>
+                                            &nbsp;
+                                            <a href="{{track.external_url}}" tooltip-placement="bottom" tooltip="Listen in spotify." target="_blank">
+                                                <span class="glyphicon glyphicon-play"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" ng-show="publishedPlaylist.tracks.length <= 0">
+                            <div class="col-md-10 col-md-offset-1 mar-top15 text-center">
+                                <h5>Creater of this playlist has not added any tracks in it.</h5>
+                            </div>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

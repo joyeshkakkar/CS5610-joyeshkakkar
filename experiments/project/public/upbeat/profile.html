@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Profile</title>
+</head>
+<body>
+    <p><h3>Welcome {{currentUser.firstName}}</h3></p>
+    <div class="container container-fluid">
+        <tabset>
+            <tab heading="Favorite Tracks">
+                <div class="container-fluid">
+                    <table class="table table-striped" ng-show="favTracks">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="track in favTracks">
+                                <td>{{track.name}}</td>
+                                <td>
+                                    <button ng-click="removeTrackFromFav(track)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    <button ng-click="viewTrackData(track)" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </tab>
+            <tab heading="Favorite Albums">
+                <!--Album Table-->
+                <div class="container-fluid">
+                    <table class="table table-striped" ng-show="favAlbums">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="album in favAlbums">
+                                <td>{{album.name}}</td>
+                                <td>
+                                    <button ng-click="removeAlbumFromFav(album)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    <button ng-click="viewAlbumData(album)" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </tab>
+            <tab heading="Favorite Artists">
+                <!--Artist Table-->
+                <div class="container-fluid">
+                    <table class="table table-striped" ng-show="favArtists">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="artist in favArtists">
+                                <td>{{artist.name}}</td>
+                                <td>
+                                    <button ng-click="removeArtistFromFav(artist)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    <button ng-click="viewArtistData(artist)" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tab>
+        </tabset>
+
+    </div>
+
+
+
+
+
+
+    <script type="text/ng-template" id="trackDetails.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Track Details</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row" ng-show="favTrack.album.images[0].url">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <img class="poster" ng-src="{{favTrack.album.images[0].url}}" width="50" />
+                </div>
+            </div>
+            <div class="row" ng-show="favTrack.name">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Track Name:&nbsp;</label>{{favTrack.name}}
+                </div>
+            </div>
+            <div class="row" ng-show="favTrack.album.name">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Album:&nbsp;</label>{{favTrack.album.name}}
+                </div>
+            </div>
+            <div class="row" ng-show="favTrack.artists[0].name">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Artist:&nbsp;</label>{{favTrack.artists[0].name}}
+                </div>
+            </div>
+            <div class="row" ng-show="favTrack.popularity">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Popularity:&nbsp;</label>{{favTrack.popularity}}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+    </script>
+
+
+
+    <script type="text/ng-template" id="albumDetails.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Album Details</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row" ng-show="favAlbum.images[0].url">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <img class="poster" ng-src="{{favAlbum.images[0].url}}" width="50" />
+                </div>
+            </div>
+            <div class="row" ng-show="favAlbum.name">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Album Name:&nbsp;</label>{{favAlbum.name}}
+                </div>
+            </div>
+            <div class="row" ng-show="favAlbum.type">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Type:&nbsp;</label>{{favAlbum.type}}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+    </script>
+
+
+
+
+
+
+    <script type="text/ng-template" id="artistDetails.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Artist Details</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row" ng-show="favArtist.images[0].url">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <img class="poster" ng-src="{{favArtist.images[0].url}}" width="50" />
+                </div>
+            </div>
+            <div class="row" ng-show="favArtist.name">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Artist Name:&nbsp;</label>{{favArtist.name}}
+                </div>
+            </div>
+            <div class="row" ng-show="favArtist.genres[0]">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Genre:&nbsp;</label>{{favArtist.genres[0]}}
+                </div>
+            </div>
+            <div class="row" ng-show="favArtist.popularity">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Popularity:&nbsp;</label>{{favArtist.popularity}}
+                </div>
+            </div>
+            <div class="row" ng-show="favArtist.followers.total">
+                <div class="col-md-10 col-md-offset-1 mar-top15">
+                    <label>Followers:&nbsp;</label>{{favArtist.followers.total}}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+        </div>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Angular Routing Experiment</title>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/003.js"></script>
+    <link rel="stylesheet" href="css/styleSheet01.css"/>
+    <link href="css/bootstrap.css" rel="stylesheet" />    
+</head>
+<body style="padding-top:50px" ng-app="StockApp">
+    <div class="container">
+        <header>
+            <h1 class="text-center">Angular Routing Experiment with Login/Logout feature</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    Previous experiment is extended and logout feature is provided to user. Once a user is logged out, he can no longer visit his portfolio.
+                    Below login credentials should be used to login to the application.
+                    <p>User1-> username: johndoe, password: 1234 </p>                  
+                    <p>User2-> username: janedoe, password: 1234</p>
+                    <p>User3-> username: admin, password: admin</p>
+               </p>
+                <hr />
+            </div>
+        </article>
+        <div>
+            <nav ng-controller="NavController" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Stock Market</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#/home">Home</a></li>
+                            <li><a href="#/news">News</a></li>
+                            <li ng-show="currentUser"><a href="#/portfolio/{{currentUser.username}}">Portfolio</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li ng-show="currentUser" ng-click="logout()"><a href="#/home">Log Out</a></li>
+                        </ul>
+                        <form class="navbar-form navbar-right" ng-show="!currentUser">
+                            <div class="form-group">
+                                <input type="text" ng-model="username" placeholder="Username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" ng-model="password" placeholder="Password" class="form-control">
+                            </div>
+                            <button ng-click="login()" type="button" class="btn btn-success">Sign in</button>
+                        </form>
+                    </div><!--/.navbar-collapse -->
+                </div>
+            </nav>
+        </div>
+
+        <div ng-view>
+        </div>
+        <hr />
+
+        <!-- Code Snippet-->
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                var app = angular.module(&quot;StockApp&quot;, [&quot;ngRoute&quot;]);
+                app.config([&apos;$routeProvider&apos;, function ($routeProvider) {
+                    $routeProvider.
+                     when(&apos;/home&apos;, {
+                         templateUrl: &apos;stockApp/home.html&apos;
+                     }).
+                     when(&apos;/news&apos;, {
+                         templateUrl: &apos;stockApp/news.html&apos;
+                     }).
+                    when(&apos;/portfolio/:username&apos;, {
+                        templateUrl: &apos;stockApp/portfolio.html&apos;,
+                        controller: &apos;PortfolioController&apos;
+                    }).
+                     otherwise({
+                         redirectTo: &apos;/home&apos;
+                     });
+                }]);
+                app.controller(&quot;PortfolioController&quot;, function ($scope, UserService, $routeParams) {
+                    var username = $routeParams.username;
+                    $scope.currentUser = UserService.getCurrentuser();
+                });
+                app.controller(&quot;NavController&quot;, function ($scope, UserService) {
+                    $scope.currentUser = null;
+                    $scope.login = function () {
+                        var username = $scope.username;
+                        var password = $scope.password;
+                        $scope.currentUser = UserService.login(username, password);
+                    }
+                    $scope.logout = function () {
+                        $scope.currentUser = null;
+                        UserService.logout();
+                        $scope.username = null;
+                        $scope.password = null;
+                    }
+                });
+                app.factory(&quot;UserService&quot;, function () {
+                    var currentuser = null;
+                    var users = [
+                        { username: &quot;johndoe&quot;, password: &quot;1234&quot; },
+                        { username: &quot;janedoe&quot;, password: &quot;1234&quot; },
+                        { username: &quot;admin&quot;, password: &quot;admin&quot; }
+                    ]
+                    var login = function (username, password) {
+                        for (var u in users) {
+                            if ((users[u].username == username) &amp;&amp; (users[u].password == password)){
+                                currentuser = users[u];
+                                return users[u];
+                            }
+                        }
+                        return null;
+                    };
+                    var logout = function () {
+                        currentUser = null;
+                    }
+                    var getCurrentuser = function () {
+                        return currentuser;
+                    }
+                    return {
+                        login: login,
+                        getCurrentuser: getCurrentuser,
+                        logout: logout
+                    }
+            </pre>
+        </div>
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <hr />
+            <p>
+                UserService maintains an array of users and validates user credentials upon login. A valid user is set to scope as 
+                currentUser and passed on to PortfolioController. Navigator for Portfolio page will be visible upon successful login.
+                Once a user logs out, navigator for Portfolio page will not be visible.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/Experiments/ngRouting/003.html" target="_blank">HTML Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/ngRouting/js/003.js" target="_blank">JS Source</a>
+            <a href="../../fileview/Default.aspx?~/Experiments/ngRouting/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+
+</body>
+</html>

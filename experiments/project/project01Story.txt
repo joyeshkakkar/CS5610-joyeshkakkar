@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../Experiments/project/project01Story.txt                   Project related Experiments Part 1
+public/project01.html        Fetch data through api
+public/project02.html        Delete the data from the view
+public/project03.html		 Routing to different pages of the application
+public/project04.html		 Using a Service to call api
+public/project05.html		 Search multiple resources using single input

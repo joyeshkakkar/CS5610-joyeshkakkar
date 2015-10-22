@@ -1,0 +1,91 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML 5 New Elements Experiment</title>
+    <meta charset="utf-8">
+  <style>
+        body {
+        }
+
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        h2 {
+            background-color: #8F8F8F;
+            color: #FFFFFF;
+            font-size: 1em;
+            padding: 0.5em;
+            width: 100%;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .exp-wrap a:hover + .desc {
+            display: block;
+        }
+
+        </style>
+
+    </head>
+
+<body>
+    <form>
+        <div class="main-wrapper">
+
+            <h1>HTML 5 New Elements</h1>
+            <hr/>
+            <div>
+                <h3>Date Time Field</h3>
+                <label for="datetime">Date Time:</label>
+                <input type="datetime-local" id="datetime" name="datetime" title="datetime"/>
+            </div>
+
+            <div>
+                <h3>Input Restrictions</h3>
+                <label for="quantity">Quantity:</label>
+                <input type="number" name="quantity" id="quantity"
+                       min="0" max="100" step="10" value="30">
+            </div>
+
+            <div>
+                <h3>Input Range</h3>
+                <label for="range">Range:</label>
+                <input type="range" name="range"  id="range" min="0" max="10">
+            </div>
+
+            <div>
+                <h3>Search</h3>
+                <label for="search">Search Google:</label>
+                <input type="search" name="googlesearch" id="search">
+                <input type="submit">
+            </div>
+
+            <div>
+                <h3>Meter Element</h3>
+                <label for="meter">Meter:</label>
+                <meter value="2" min="0" max="10">2 out of 10</meter><br>
+            </div>
+            <br /><br />           
+            
+            <hr />
+
+            <h4>Source Code</h4>
+            <a href="../../fileview/Default.aspx?~/experiments/storyfiles/htmlExperiments1.htm" target="_blank">View Source</a>
+
+            <hr />
+
+            <h4>References</h4>
+            <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+
+            <hr />
+
+        </div>
+    </form>
+</body>
+</html>

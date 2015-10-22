@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AJAX UI Experiments</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/002.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            AJAX UI Experiments                                                                                                 
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment uses an API to fetch movie details and rendering the jsonp response on the client using a template.</h3>
+        <p>Input a movie title and get it's details.</p>
+        <hr />
+    </div>
+    <div class="maindiv">        
+        <input id="movieTitle" placeholder="Movie Title"/>
+        <button id="getMovie">Get Movie Information</button>
+        
+    </div>
+    <div class="maindiv">
+        <div class="content">
+            <h3>Movie Details will be displayed here.</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="hideDiv">
+        <table id="movies" class="table-bordered">
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr class="template">
+                    <td class="title"></td>
+                    <td class="plot"></td>
+                    <td>
+                        <img class="poster" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+    <div class="codesnippet">
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre>
+            $(function () {
+                $(&quot;#getMovie&quot;).click(function () {
+                    var movieTitle=$(&quot;#movieTitle&quot;).val();    
+                    $.ajax({
+                        url: &quot;http://www.myapifilms.com/imdb?title=&quot;+movieTitle+&quot;&amp;format=JSONP&amp;aka=0&amp
+                            ;business=0&amp;seasons=0&amp;seasonYear=0&amp;technical=0&amp;filter=N&amp;exactFilter=0&amp;limit=1
+                            &amp;lang=en-us&amp;actors=N&amp;biography=0&amp;trailer=0&amp;uniqueName=0&amp;filmography=0&amp;
+                            bornDied=0&amp;starSign=0&amp;actorActress=0&amp;actorTrivia=0&amp;movieTrivia=0&amp;awards=0&amp;
+                            moviePhotos=N&amp;movieVideos=N&quot;,
+                        dataType: &quot;jsonp&quot;,
+                        success: renderMovies
+                    });
+                })
+            });
+            function renderMovies(movies) {
+                var parent = $(&quot;#movies&quot;);
+                var template = parent.find(&quot;.template&quot;);
+                var movie = movies[0];
+                var title = movie.title;
+                var plot = movie.plot;
+                var urlPoster = movie.urlPoster;
+                template.find(&quot;.title&quot;).attr(&quot;style&quot;, &quot;font-weight: bold;&quot;).html(title);
+                template.find(&quot;.plot&quot;).html(plot);
+                template.find(&quot;.poster&quot;).attr(&quot;src&quot;, urlPoster);
+                $(&quot;.content&quot;).empty().html(parent.append(template));
+            }
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            API returns a response in JSONP format which is parsed and individual attributes of the object is captured 
+            and appended on the UI using a template. By using a template, we can avoid creating html elements in javascript.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/002.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/js/002.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

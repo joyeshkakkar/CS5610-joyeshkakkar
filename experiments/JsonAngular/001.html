@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AJAX UI Experiments</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/001.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            AJAX UI Experiments                                                                                                 
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment uses an API to fetch movie details and rendering the jsonp response on the client.</h3>
+        <p>Input a movie title and get it's details.</p>
+        <hr />
+    </div>
+    <div class="maindiv">        
+        <input id="movieTitle" placeholder="Movie Title"/>
+        <button id="getMovie">Get Movie Information</button>
+        
+    </div>
+    <div class="maindiv">
+        <div class="content">
+            <h3>Movie Details will be displayed here.</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="codesnippet">
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre>
+            $(function () {
+                $(&quot;#getMovie&quot;).click(function () {
+                var movieTitle=$(&quot;#movieTitle&quot;).val();    
+                $.ajax({
+                        url: &quot;http://www.myapifilms.com/imdb?title=&quot;+movieTitle+&quot;&amp;format=JSONP&amp;aka=0&amp;business=0&amp;seasons=0&amp;seasonYear=0
+                                &amp;technical=0&amp;filter=N&amp;exactFilter=0&amp;limit=1&amp;lang=en-us&amp;actors=N&amp;biography=0&amp;trailer=0&amp;uniqueName=0
+                                &amp;filmography=0&amp;bornDied=0&amp;starSign=0&amp;actorActress=0&amp;actorTrivia=0&amp;movieTrivia=0&amp;awards=0
+                                &amp;moviePhotos=N&amp;movieVideos=N&quot;,
+                        dataType: &quot;jsonp&quot;,
+                        success: renderMovies
+                    });
+                })
+            });
+            function renderMovies(movies) {
+                var movie = movies[0];
+                var title = movie.title;
+                var plot = movie.plot;
+                var urlPoster = movie.urlPoster;
+                var h4 = $(&quot;&amp;lth4&gt;&quot;).append(title);
+                var p= $(&quot;&amp;ltp&gt;&quot;).append(plot).append(&quot;&amp;lt/hr&gt;&quot;);
+                var img=$(&quot;&amp;ltimg&gt;&quot;).attr(&quot;src&quot;, urlPoster);            
+                $(&quot;.content&quot;).empty().append(h4).append(p).append(img);
+            }
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            API returns a response in JSONP format which is parsed and individual attributes of the object is captured and appended on the UI.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/001.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/js/001.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

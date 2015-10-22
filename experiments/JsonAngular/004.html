@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Basic Angular js Experiments</title>
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />    
+    <script src="js/angular.min.js"></script>
+    <script src="js/004.js"></script>
+</head>
+<body ng-app="BasicMoviesApp">
+    <header>
+        <h1>
+            Basic Angular JS Experiment
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment uses angular js to display static data and allows user to delete content.</h3>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="content">
+            <div ng-controller="BasicMovieController" class="container">
+                <h1>Simple Movie Database</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Year</th>
+                            <th>Plot</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="movie in movies">
+                            <td>{{movie.title}}</td>
+                            <td>{{movie.year}}</td>
+                            <td>{{movie.plot}}</td>
+                            <td>
+                                <button ng-click="removeMovie(movie)" class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="maindiv">
+        <h4> Code Snippet</h4>
+        <pre>
+            var app = angular.module(&quot;BasicMoviesApp&quot;, []);
+            app.controller(&quot;BasicMovieController&quot;,
+                function ($scope) {
+                    var movies = [
+                        { title: &quot;Rush&quot;, year: 2009, plot: &quot;The merciless 1970s rivalry between Formula One rivals James Hunt and Niki Lauda.&quot; },
+                        { title: &quot;The Shawshank Redemption&quot;, year: 1994, plot: &quot;Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.&quot; },
+                        { title: &quot;The Prestige &quot;, year: 2006, plot: &quot;Two stage magicians engage in competitive one-upmanship in an attempt to create the ultimate stage illusion.&quot; }
+                    ];
+                    $scope.movies = movies;
+                    $scope.removeMovie = function (movie) {
+                        var index = $scope.movies.indexOf(movie);
+                        $scope.movies.splice(index, 1);
+                    }
+                });
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            An array of movies is created which is rendered on the UI using angular js. Also, user is having capability to remove a movie. As a user
+            clicks on the delete button, that movie object is sent to js and spliced from the arrary.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/004.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/js/004.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JsonAngular/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

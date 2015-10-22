@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JQuery</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jQuery04.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>
+            JQuery Experiments
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment shows the resizable contnet effect achieved using JQuery.</h3>
+        <p>
+            Resize the game description using mouse.
+        </p>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="games2">
+            <div class="acunity">
+                <img src="../images/JQuery/acunity.jpg" />
+                <h2>Assassins Creed Unity</h2>
+                <p class="resizeme">
+                    Assassin's Creed is a historical fiction action-adventure open world stealth video game series. 
+                    Assassin's Creed Unity is a 2014 historical fiction action-adventure open world stealth video game developed by Ubisoft Montreal and published by Ubisoft. It was released in November 2014 for Microsoft Windows, PlayStation 4 and Xbox One. The game is the seventh major installment in the Assassin's Creed series, and the successor to 2013's Assassin's Creed IV: Black Flag with ties to 2014's Assassin's Creed Rogue. Set within Paris during the French Revolution, the single-player story follows Arno Dorian in his efforts to expose the true powers behind the Revolution.
+                    The game retains the series' third-person open world exploration as well as introducing a revamped combat, parkour and stealth system. The game also introduces cooperative multiplayer to the Assassin's Creed series, letting up to four players engage in narrative-driven missions and explore the open-world map.
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="codesnippet">
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre>
+                $(".resizeme").resizable({
+                    grid: [20, 10]
+                });
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            User can resize the text. Resize handles will be available in default values of "e", "s" and "se" which translates to right, bottom and bottom-right.
+            Also, resizing will be happening according to grid size.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/jQuery04.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/js/jQuery04.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

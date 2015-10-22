@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project based Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="text-center">Project based Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, I have used a service to call the api and fetch data. Service is in turn called from the UI layer.
+                    Project can be accessed through link. <br />
+                    <a href="http://upbeat-joyeshkcs5610.rhcloud.com/">Project link</a>
+                </p>
+            </div>
+        </article>      
+
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                app.factory(&apos;UpbeatService&apos;, function UpbeatService($http) {                    
+                    var searchTracks = function (title, callback) {
+                        $http.get(&quot;https://api.spotify.com/v1/search?q=&quot; + title + &quot;&amp;type=track&quot;)
+                        .success(callback);
+                    }
+                    
+                    return {
+                        searchTracks: searchTracks
+                    }
+                });      
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                A service is used to call the api and fetch data. Service is in turn called from the UI layer. All the common operations will be 
+                present in service as it will help in accessing data from other pages.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/index.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat-service.js" target="_blank">Service JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

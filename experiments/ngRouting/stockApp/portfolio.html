@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1>Portfolio</h1>
+    <div ng-show="currentUser">
+        <h2>Portfolio of {{currentUser.username}}</h2>
+        <ul>
+            <li ng-repeat="stocks in stockList">
+                {{stocks.symbol}}
+                <button ng-click="removeStock($index)" class="btn btn-danger">
+                    &times;
+                </button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

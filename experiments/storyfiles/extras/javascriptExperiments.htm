@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Javascript Experiment</title>
+    <style>
+        body {
+        }
+
+        .main-wrapper {
+            height: 80%;
+            width: 96%;
+            padding: 2%;
+        }
+
+        h2 {
+            background-color: #8F8F8F;
+            color: #FFFFFF;
+            font-size: 1em;
+            padding: 0.5em;
+            width: 100%;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .exp-wrap a:hover + .desc {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>What Can JavaScript Do?</h1>
+
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <button type="button"
+            onclick="document.getElementById('demo').innerHTML = 'Hello JavaScript!'">
+        Click Me!
+    </button>
+
+    <hr />
+
+    <h4>Source Code</h4>
+    <a href="../../fileview/Default.aspx?~/experiments/storyfiles/javascriptExperiments.htm" target="_blank">View Source</a>
+
+    <hr />
+
+    <h4>References</h4>
+    <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+
+    <hr />
+
+</body>
+</html>

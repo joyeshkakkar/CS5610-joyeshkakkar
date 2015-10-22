@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JQuery</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jQuery05.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            JQuery UI Experiments
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment shows the sortable effect achieved using JQuery.</h3>
+        <p>Below list can be reordered by clicking on a item and moving it up or down.</p>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="games">
+            <h4>Game Titles</h4>
+            <ul class="reorderme">
+                <li>
+                    Assassins Creed Unity
+                </li>
+                <li>
+                    Call Of Duty
+                </li>
+                <li>
+                    Crysis
+                </li>
+                <li>
+                    Halo
+                </li>
+                <li>
+                    Hitman
+                </li>
+                <li>
+                    DOTA
+                </li>
+                <li>
+                    Counter Strike
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div class="codesnippet">
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre>
+            $(function () {
+                $(".reorderme").sortable({
+                    axis: "y"
+            })    
+})
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            JQuery objects are captured and made sortable. Also, objects can be reordered in y-axis only which is achieved by setting "axis" property.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/jQuery05.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/js/jQuery05.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+</body>
+</html>

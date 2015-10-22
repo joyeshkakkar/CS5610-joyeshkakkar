@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/documentation.css" />
+    <title>Database Schema</title>
+</head>
+<body>
+    <div class="jumbotron text-center">
+        <h1>Database Schema</h1>
+    </div>
+    <div class="container">
+        <div class="description col-md-10 col-lg-offset-1">
+            <p class="large-para">
+                I have used following collections in this project.
+            </p>
+            <p class="large-para">
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>Track Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Specifies how favorite tracks in UserSchema and tracks in PlaylistSchema are saved.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                            var TrackSchema = new mongoose.Schema({
+                                name: String,
+                                id: String,
+                                preview_url: String,
+                                external_url: String,
+                                addedOn: { type: Date, default: Date.now }
+                            }, { collection: "track" });
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>Album Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Specifies how favorite albums are saved in UserSchema.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                             var AlbumSchema = new mongoose.Schema({
+                                name: String,
+                                id: String,
+                                addedOn: { type: Date, default: Date.now }
+                            }, { collection: "album" });
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>Artist Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Specifies how favorite artists are saved in UserSchema.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                            var ArtistSchema = new mongoose.Schema({
+                                name: String,
+                                id: String,
+                                addedOn: { type: Date, default: Date.now}
+                            }, { collection: "artist" });
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>User Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Stores user's information and also favorite tracks, albums and artists.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                            var UserSchema = new mongoose.Schema({
+                                username: String,
+                                password: String,
+                                firstName: String,
+                                lastName: String,
+                                role: { type: String, default: 'Member' },
+                                email: String,
+                                phone: String,
+                                tracks: [TrackSchema],
+                                albums: [AlbumSchema],
+                                artists: [ArtistSchema]
+                            }, { collection: "user" });
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>Playlist Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Stores Playlists and tracks in it created by a user.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                             var PlaylistSchema = new mongoose.Schema({
+                                name: String,
+                                tracks: [TrackSchema],
+                                publish: { type: Boolean, default: 'false' },
+                                userId: String,
+                                addedOn: { type: Date, default: Date.now }
+                            }, { collection: "playlist" });
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10  text-center">
+                        <h3>Follower Schema</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        Stores playlist and user combination to determine which user follows which playlist.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <pre class="codesnippet">
+                            var FollowerSchema = new mongoose.Schema({
+                                playlistId: String,
+                                followerUserId: String
+                            }, { collection: "follower" });
+                        </pre>
+                    </div>
+                </div>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

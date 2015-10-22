@@ -1,0 +1,248 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+@import url(http://fonts.googleapis.com/css?family=Karla);
+@import url(http://fonts.googleapis.com/css?family=Questrial:700);
+
+.profile_pic {
+    height: 30%;
+    width: 20%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/background-wooden.jpg");
+    background-size: 100%;
+    background-position: 0 0;
+    color: white;
+    font: 17px 'Karla', sans-serif;
+}
+
+.pad {
+    padding: 10px;
+}
+
+ul.master_navigation {
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+    margin: 0.7em 0;
+    padding: 0;
+    font-family: 'Questrial', sans-serif;
+}
+
+    ul.master_navigation li {
+        display: inline-block;
+        padding: 0 0.5%;
+    }
+
+a {
+    color: #FFFFF5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    a:visited {
+        color: #999966;
+    }
+
+    a:hover {
+        color: #A9A99E;
+    }
+
+p {
+    text-align: justify;
+}
+
+img {
+    float: left;
+    border: 2px solid gray;
+    margin: 0px 15px 15px 0px;
+    vertical-align: text-bottom;
+}
+
+.icon {
+    height: 100%;
+    width: 100%;
+    border: transparent;
+    float: right;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 9%;
+}
+
+.links {
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    list-style: none;
+    margin: 0.7em 0;
+    padding: 0;
+    font-family: 'Questrial', sans-serif;
+    text-decoration: none;
+    color: #FFFFF5;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    .links:hover {
+        color: #A9A99E;
+    }
+
+
+#copyright {
+    float: left;
+}
+
+#cssmenu {
+  width: auto;
+}
+#cssmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: block;
+  zoom: 1;
+}
+#cssmenu ul:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#cssmenu ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+#cssmenu.align-right ul li {
+  float: right;
+}
+#cssmenu.align-center ul {
+  text-align: center;
+}
+#cssmenu ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+#cssmenu ul li a:hover {
+  color: #A9A99E;
+}
+#cssmenu ul li a:hover:before {
+  width: 100%;
+}
+#cssmenu ul li a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 19px;
+  height: 6px;
+  width: 6px;
+  background: #ffffff;
+  opacity: .5;
+}
+#cssmenu ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #A9A99E;
+  -webkit-transition: width .25s;
+  -moz-transition: width .25s;
+  -ms-transition: width .25s;
+  -o-transition: width .25s;
+  transition: width .25s;
+}
+#cssmenu ul li.last > a:after,
+#cssmenu ul li:last-child > a:after {
+  display: none;
+}
+#cssmenu ul li.active a {
+  color: #A9A99E;
+}
+#cssmenu ul li.active a:before {
+  width: 100%;
+}
+#cssmenu.align-right li.last > a:after,
+#cssmenu.align-right li:last-child > a:after {
+  display: block;
+}
+#cssmenu.align-right li:first-child a:after {
+  display: none;
+}
+
+.description {
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+.inline-bold {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.large-para {
+    line-height: 170%;
+}
+
+.highlight-link {
+    font-weight: 900;
+    font-size: 22px;
+    color: #006666;
+}
+
+.highlight-link:hover {
+    font-weight: 900;
+    color: #0066CC;
+}
+
+
+@media screen and (max-width: 768px) {
+  #cssmenu ul li {
+    float: none;
+    display: block;
+  }
+  #cssmenu ul li a {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #fb998c;
+  }
+  #cssmenu ul li.last > a,
+  #cssmenu ul li:last-child > a {
+    border: 0;
+  }
+  #cssmenu ul li a:after {
+    display: none;
+  }
+  #cssmenu ul li a:before {
+    display: none;
+  }
+}
+

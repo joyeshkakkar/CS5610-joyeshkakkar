@@ -1,0 +1,6 @@
+﻿../../story/whatisnext.htm?../Experiments/JsonAngular/jsonAngularStory.txt                   JSON & Angular Experiments
+001.html            Fetching data from API using AJAX
+002.html            Displaying data as per template using AJAX
+003.html            Displaying multiple data rows as per template using AJAX
+004.html            Basic Movie Database with delete using angular
+005.html            Basic Movie Database with addition using angular

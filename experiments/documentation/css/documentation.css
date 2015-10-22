@@ -1,0 +1,46 @@
+﻿.description {
+    font-size: 17px;
+    font-weight: lighter;
+}
+
+.inline-bold {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.large-para {
+    line-height: 170%;
+}
+
+.highlight-link {
+    font-weight: 900;
+    font-size: 18px;
+    color: #006666;
+}
+
+.highlight {
+    font-weight: 600;
+    color: #006666;
+}
+
+.highlight-link:hover {
+    font-weight: 900;
+    color: #0066CC;
+}
+
+.codesnippet{
+    background-color: #8585FF;
+    margin-top:10px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    width: 100%;
+    clear:both;
+    position:relative;
+}
+
+.screenshot{
+    position: relative;
+    height: auto;
+    width: 800px;
+}

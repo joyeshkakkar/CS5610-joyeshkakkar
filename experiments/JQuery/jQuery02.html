@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JQuery</title>
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/jQuery02.js"></script>
+</head>
+<body>
+    <header>
+        <h1>
+            JQuery Experiments
+        </h1>
+    </header>
+    <div class="maindiv">
+        <div class="div-header"> About the experiment</div>
+        <h3>This experiment shows the clickable effect achieved using JQuery.</h3>
+        <p>
+            Click on below game images to read more about them.
+        </p>
+        <hr />
+    </div>
+    <div class="maindiv">
+        <div class="games">
+            <div class="acunity">
+                <img src="../images/JQuery/acunity.jpg" />
+                <h3>Assassins Creed Unity</h3>
+            </div>
+            <div class="cod">
+                <img src="../images/JQuery/cod.jpg" />
+                <h3>Call Of Duty</h3>
+            </div>
+            <div class="crysis">
+                <img src="../images/JQuery/crysis.jpg" />
+                <h3>Crysis</h3>
+            </div>
+        </div>
+    </div>
+    <div class="maindiv">
+        <div class="content">
+            <h3>Click on above game logos and see content here</h3>
+        </div>
+    </div>
+    <hr />
+    <div class="codesnippet">
+        <h4> Code Snippet</h4>
+        <hr />
+        <pre>
+            $(".acunity").click(addContentACUnity);
+            $(".cod").click(addContentCOD);
+            $(".crysis").click(addContentCrysis);
+            $("h1").click(function (event) {
+                console.log(event);
+            });
+            function addContentACUnity() {
+                $(".content").empty().html(
+                        $("div").filter(".ACUnityText").html());
+            }
+            function addContentCOD() {
+                $(".content").empty().html(
+                                $(".CODText").html());
+            }
+            function addContentCrysis() {
+                $(".content").empty().html(
+                                $(".CrysisText").html());
+            }
+        </pre>
+    </div>
+    <div class="maindiv">
+        <h4> Code Snippet Explanation</h4>
+        <hr />
+        <p>
+            Click on the images will invoke a JQuery function and displays related text in 'content' div.
+        </p>
+        <hr />
+        <h4> Source Code</h4>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/jQuery02.html" target="_blank">HTML Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/js/jQuery02.js" target="_blank">JS Source</a>
+        <a href="../../fileview/Default.aspx?~/Experiments/JQuery/css/styleSheet01.css" target="_blank">CSS Source</a>
+        <hr />
+    </div>
+
+    <div class="hideDiv">
+        <div class="ACUnityText">
+            <h2>Assassins Creed Unity</h2>
+            <p>
+                Assassin's Creed is a historical fiction action-adventure open world stealth video game series. The game, which features up to four player co-op, a first for the series, is set in Paris on the eve of the French Revolution and follow Arno Dorian and his fellow assassins.
+            </p>
+        </div>
+        <div class="CODText">
+            <h2>Call of Duty</h2>
+            <p>
+                Call of Duty (commonly shortened to CoD) is a first-person video game franchise. The series began on the PC, and later expanded to consoles and handhelds. Several spin-off games have also been released. The earlier games in the series are set primarily in World War II, including Call of Duty, Call of Duty 2, and Call of Duty 3.
+            </p>
+        </div>
+        <div class="CrysisText">
+            <h2>Crysis</h2>
+            <p>
+                Crysis is a first-person shooter video game developed by Crytek in their headquarters in Frankfurt, Germany, published by Electronic Arts for Microsoft Windows and released in November 2007. It is the first game of a trilogy. A separate game entitled Crysis Warhead was released on September 16, 2008, and follows similar events as Crysis but from a different narrative perspective.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

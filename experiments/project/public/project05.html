@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project based Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="text-center">Project based Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, I am searching through multiple resources using a single input. Input string is searched through movies, artists and albums.<br />
+                    <a href="http://upbeat-joyeshkcs5610.rhcloud.com/">Project link</a>
+                </p>
+            </div>
+        </article>      
+
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                $scope.search = function () {        
+                    UpbeatService.searchTracks($scope.searchByTitle, function (response) {
+                        $scope.tracks = response.tracks.items;            
+                    });
+                    UpbeatService.searchAlbums($scope.searchByTitle, function (response) {
+                        $scope.albums = response.albums.items;
+                    });
+                    UpbeatService.searchArtists($scope.searchByTitle, function (response) {
+                        $scope.artists = response.artists.items;
+                    });
+                }
+
+                In Service
+                var searchTracks = function (title, callback) {
+                    $http.get(&quot;https://api.spotify.com/v1/search?q=&quot; + title + &quot;&amp;type=track&amp;limit=10&quot;)
+                    .success(callback);
+                }
+                var searchAlbums = function (title, callback) {
+                    $http.get(&quot;https://api.spotify.com/v1/search?q=&quot; + title + &quot;&amp;type=album&amp;limit=10&quot;)
+                    .success(callback);
+                }
+                var searchArtists = function (title, callback) {
+                    $http.get(&quot;https://api.spotify.com/v1/search?q=&quot; + title + &quot;&amp;type=artist&amp;limit=10&quot;)
+                    .success(callback);
+                }
+                return {
+                    searchTracks: searchTracks,
+                    searchAlbums: searchAlbums,
+                    searchArtists: searchArtists,
+                    addToFavorites: addToFavorites,
+                    getFavorites: getFavorites
+                }
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                Single search string is used to search through multiple pages 
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/upbeat/home.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat-service.js" target="_blank">Service JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

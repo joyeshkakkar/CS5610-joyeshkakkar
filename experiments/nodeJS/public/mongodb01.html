@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mongo DB Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/md-app01.js"></script>
+</head>
+<body ng-app="StockApp">
+    <div class="container" ng-controller="StockController">
+        <header>
+            <h1 class="text-center">Mongo DB Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, Node js is used to fetch data saved in mongo db. Mongoose is used to retrieve the data. 
+                </p>
+                <hr />
+            </div>
+        </article>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                $http.get(&quot;/api/userMD&quot;)
+                .success(function (response) {
+                    $scope.users = response;
+                }) 
+                <br />
+                Server Side
+                app.get(&quot;/api/userMD&quot;, function (req, res) {
+                    UserModel.find(function (err, data) {
+                        res.json(data);
+                    });
+                });             
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                Angular is used to fetch the data stored in mongo db. A function is called at client side when the page loads, which
+                in turn invokes a get call at server and fetches the data.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/mongodb01.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/js/md-app01.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

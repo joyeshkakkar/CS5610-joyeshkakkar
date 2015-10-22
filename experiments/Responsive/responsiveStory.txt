@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../Experiments/Responsive/responsiveStory.txt                   Responsive Experiments
+responsive01.html            Responsive Text
+responsive02.html            Responsive Nav bar 
+responsive03.html            Responsive Layout
+responsive04.html            Responsive Table
+responsive05.html            Responsive Form

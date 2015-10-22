@@ -1,0 +1,112 @@
+﻿<div ng-controller="HomeController" class="container">
+    <!--Main Controller-->
+    <div class="input-group">
+        <input type="text" ng-model="searchByTitle" class="form-control" placeholder="Search for Tracks... Albums... Artists">
+        <span class="input-group-btn">
+            <button ng-click="search()" class="btn btn-primary" type="button">Search</button>
+        </span>
+    </div><!-- /input-group -->
+    <hr />
+    <tabset ng-show="tracks || albums || artists">
+        <tab heading="Tracks" ng-show="tracks">
+            <div class="container-fluid">
+                <table class="table table-striped" ng-show="tracks">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Album Cover</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2">Album</th>
+                            <th class="col-md-2">Artists</th>
+                            <th class="col-md-1">Popularity</th>
+                            <th class="col-md-1">Preview</th>
+                            <th class="col-md-2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="track in tracks | orderBy:'-popularity'">
+                            <td class="col-md-2"><img class="poster" ng-src="{{track.album.images[0].url}}" width="50" /></td>
+                            <td class="col-md-2">{{track.name}}</td>
+                            <td class="col-md-2">{{track.album.name}}</td>
+                            <td class="col-md-2">{{track.artists[0].name}}</td>
+                            <td class="col-md-1">{{track.popularity}}</td>
+                            <td class="col-md-1">
+                                <a href="{{track.preview_url}}" target="_blank"><span class="glyphicon glyphicon-volume-up"></span> </a>
+                            </td>
+                            <td class="col-md-2">
+                                <button ng-click="removeTrack(track)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                                <button ng-click="addTrackToFavorites(track)" class="btn btn-info" ng-show="currentUser">
+                                    <span class="glyphicon glyphicon-heart-empty"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </tab>
+        <tab heading="Albums" ng-show="albums">
+            <div class="container-fluid">
+                <table class="table table-striped" ng-show="albums">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Album Cover</th>
+                            <th class="col-md-4">Name</th>
+                            <th class="col-md-2">Type</th>
+                            <th class="col-md-2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="album in albums | orderBy:'name'">
+                            <td class="col-md-2"><img class="poster" ng-src="{{album.images[0].url}}" width="50" /></td>
+                            <td class="col-md-4">{{album.name}}</td>
+                            <td class="col-md-2">{{album.type}}</td>
+                            <td class="col-md-2">
+                                <button ng-click="removeAlbum(album)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                                <button ng-click="addAlbumToFavorites(album)" class="btn btn-info" ng-show="currentUser">
+                                    <span class="glyphicon glyphicon-heart-empty"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </tab>
+        <tab heading="Artists" ng-show="artists">
+            <div class="container-fluid">
+                <table class="table table-striped" ng-show="artists">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">Artist</th>
+                            <th class="col-md-2">Name</th>
+                            <th class="col-md-2">Genre</th>
+                            <th class="col-md-1">Popularity</th>
+                            <th class="col-md-2">Followers</th>
+                            <th class="col-md-2">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="artist in artists | orderBy:'-followers.total'">
+                            <td class="col-md-2"><img class="poster" ng-src="{{artist.images[0].url}}" width="50" /></td>
+                            <td class="col-md-2">{{artist.name}}</td>
+                            <td class="col-md-2">{{artist.genres[0]}}</td>
+                            <td class="col-md-1">{{artist.popularity}}</td>
+                            <td class="col-md-2">{{artist.followers.total}}</td>
+                            <td class="col-md-2">
+                                <button ng-click="removeArtist(artist)" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                                <button ng-click="addArtistToFavorites(artist)" class="btn btn-info" ng-show="currentUser">
+                                    <span class="glyphicon glyphicon-heart-empty"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </tab>
+    </tabset>
+</div><!--Main div ends-->

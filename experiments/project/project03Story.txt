@@ -1,0 +1,6 @@
+../../story/whatisnext.htm?../Experiments/project/project03Story.txt                   Project related Experiments Part 3
+public/project11.html        Favorite support on album, storing in db
+public/project12.html        Favorite support on artist, storing in db
+public/project13.html		 Sorting data according to popularity, followers etc.
+public/project14.html		 Deleting fav album from profiles page
+public/project15.html		 Deleting fav artist from db

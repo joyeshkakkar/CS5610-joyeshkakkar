@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mongo DB Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/md-app03.js"></script>
+</head>
+<body ng-app="StockApp">
+    <div class="container" ng-controller="StockController">
+        <header>
+            <h1 class="text-center">Mongo DB Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, Node js is used to add a new record. First data is fetched using angular which calls a service 
+                    at server side and then displays the data in tabluar format. For adding a row, angular calls another service at 
+                    server side to add the data entered by user.
+                </p>
+                <hr />
+            </div>
+        </article>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>&nbsp;</th>                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input ng-model="user.firstName" class="form-control" />
+                    </td>
+                    <td>
+                        <input ng-model="user.lastName" class="form-control" />
+                    </td>
+                    <td>
+                        <button ng-click="add(user)" class="btn btn-success pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-repeat="user in users">
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>
+                        <button ng-click="remove(user._id)" class="btn btn-danger pull-right">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                $scope.add = function (user) {
+                    $http.post(&quot;/api/userMD&quot;, user)
+                    .success(function (response) {
+                        $scope.users = response;
+                        $scope.user = null;
+                    });
+                };
+                <br />
+                Server Side
+                app.post(&quot;/api/userMD&quot;, function (req, res) {
+                    var user1 = new UserModel(req.body);
+                    user1.save(function (err, doc) {
+                        UserModel.find(function (err, data) {
+                            res.json(data);
+                        });
+                    });
+                });          
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                Angular is used to add a new record to the mongodb. A function is called at client side on click of Add Button, which
+                in turn invokes a post call at server and pushes the data.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/mongodb03.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/js/md-app03.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/nodeJS/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

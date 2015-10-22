@@ -1,0 +1,78 @@
+body {
+    background-color:lightgray
+}
+h1,h3{
+     text-align: center;
+}
+
+img{
+    position: relative;
+    height: 150px;
+    width: 200px;
+    border-radius: 5%;
+}
+
+.cod,.acunity,.crysis{
+    float:left;
+    padding: 10px;
+    margin: 5px;
+}
+.maindiv{
+    width: 100%;
+     clear:both;
+     position:relative;
+}
+.div-header {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding: 3px;
+    margin: 1px;
+    font-size:20px;
+}
+.games{
+    height:220px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+    padding-left:120px;
+}
+
+.games2{
+    height:450px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+    padding-left:120px;
+}
+hr{clear:both;}
+
+.content{
+    margin-left: 150px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+}
+.hideDiv{
+    display:none;
+}
+
+.codesnippet{
+    background-color: #6495ed;
+    margin-top:10px;
+    border-width: 2px;
+    border-style:solid;
+    border-color:black;
+    width: 100%;
+    clear:both;
+    position:relative;
+}

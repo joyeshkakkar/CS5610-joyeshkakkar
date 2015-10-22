@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project based Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="text-center">Project based Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, I have used angular routing to navigate to different page of the application.
+                    Project can be accessed through link. <br />
+                    <a href="http://upbeat-joyeshkcs5610.rhcloud.com/">Project link</a>
+                </p>
+            </div>
+        </article>      
+
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                app.config([&apos;$routeProvider&apos;, function ($routeProvider) {
+                    $routeProvider.
+                     when(&apos;/home&apos;, {
+                         templateUrl: &apos;upbeat/home.html&apos;
+                         ,controller: &apos;HomeController&apos;
+                     }).
+                     when(&apos;/about&apos;, {
+                         templateUrl: &apos;upbeat/about.html&apos;
+                     }).
+                    when(&apos;/profile&apos;, {
+                        templateUrl: &apos;upbeat/profile.html&apos;
+                        , controller: &apos;ProfileController&apos;
+                    }).
+                     otherwise({
+                         redirectTo: &apos;/home&apos;
+                     });
+                }]);       
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                Routing is configured at client side and based on the configuration, different pages of application are opened.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/index.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>

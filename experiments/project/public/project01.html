@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Project based Experiment</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styleSheet01.css" />
+</head>
+<body>
+    <div>
+        <header>
+            <h1 class="text-center">Project based Experiment</h1>
+        </header>
+        <article>
+            <div class="maindiv text-center">
+                <div class="div-header"><h3> About the experiment</h3></div>
+                <p>
+                    In this experiment, I am using angular to fetch the track related data through the api and render the details in a tabular format.
+                    It can be accessed through link. <br />
+                    <a href="http://upbeat-joyeshkcs5610.rhcloud.com/">Project link</a>
+                </p>
+            </div>
+        </article>      
+
+        <!-- Code Snippet-->
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet</h4>
+            <pre>
+                Client Side
+                $scope.searchTracks = function () {
+                    var title = $scope.searchByTitle;
+                    $http.get(&quot;https://api.spotify.com/v1/search?q=&quot; + title + &quot;&amp;type=track&quot;)
+                    .success(function (response) {
+                        console.log(response.tracks.items[0].artists[0].name);
+                        $scope.tracks = response.tracks.items;            
+                    })
+                }            
+            </pre>
+        </div>
+        <hr />
+        <div class="maindiv">
+            <h4> Code Snippet Explanation</h4>
+            <p>
+                On click of the Go button, http.get request is invoked on the api and json data is fetched from the request.
+                Response is then shown in the tabular format.
+            </p>
+            <hr />
+            <h4> Source Code</h4>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/upbeat/home.html" target="_blank">HTML Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/js/upbeat.js" target="_blank">Client JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/server.js" target="_blank">Server JS Source</a>
+            <a href="https://github.com/kakkarjoyesh/CS5610-joyeshk/blob/master/experiments/project/public/css/styleSheet01.css" target="_blank">CSS Source</a>
+            <hr />
+        </div>
+    </div>
+</body>
+</html>
